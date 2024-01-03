@@ -1,30 +1,26 @@
-import 'dart:io';
-
-import 'package:dio/dio.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:yalla_reisen_withspringboot/app/api/rest_client.dart';
 import 'package:yalla_reisen_withspringboot/app/di.dart';
-import 'package:yalla_reisen_withspringboot/app/file_picker.dart';
+
 import 'package:yalla_reisen_withspringboot/app/router/authenticationListner.dart';
 import 'package:yalla_reisen_withspringboot/app/screens/home_page.dart';
-import 'package:yalla_reisen_withspringboot/app/widgets/elevated_button_with_icon.dart';
 import 'package:yalla_reisen_withspringboot/features/Authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:yalla_reisen_withspringboot/features/Authentication/presentation/pages/login_page.dart';
-import 'package:yalla_reisen_withspringboot/features/Data/Domain/repository/country_repository.dart';
-import 'package:yalla_reisen_withspringboot/features/Data/data/entity/country_model.dart';
-import 'package:yalla_reisen_withspringboot/features/Data/presentation/blocs/country_bloc/country_bloc.dart';
+
 import 'package:yalla_reisen_withspringboot/features/Data/presentation/pages.dart/add_city_page.dart';
 import 'package:yalla_reisen_withspringboot/features/Data/presentation/pages.dart/add_country_page.dart';
+import 'package:yalla_reisen_withspringboot/features/Data/presentation/pages.dart/add_hotel_page.dart';
+import 'package:yalla_reisen_withspringboot/features/Data/presentation/pages.dart/areas_page.dart';
 import 'package:yalla_reisen_withspringboot/features/Data/presentation/pages.dart/cities_page.dart';
 import 'package:yalla_reisen_withspringboot/features/Data/presentation/pages.dart/city_page.dart';
 import 'package:yalla_reisen_withspringboot/features/Data/presentation/pages.dart/countries_page.dart';
 import 'package:yalla_reisen_withspringboot/features/Data/presentation/pages.dart/country_page.dart';
 import 'package:yalla_reisen_withspringboot/features/Data/presentation/pages.dart/data_page.dart';
 import 'package:yalla_reisen_withspringboot/features/Data/presentation/pages.dart/excurtion_page.dart';
+import 'package:yalla_reisen_withspringboot/features/Data/presentation/pages.dart/hotels_page.dart';
+import 'package:yalla_reisen_withspringboot/features/Transfer/presentation/pages/add_transfer_contract_page.dart';
+import 'package:yalla_reisen_withspringboot/features/Transfer/presentation/pages/transfers_pages.dart';
+import 'package:yalla_reisen_withspringboot/features/Transfer/presentation/pages/vehicles_page.dart';
 
 part 'router.g.dart';
 
@@ -44,7 +40,7 @@ class AppRouter {
       final bool goingToLogin = state.matchedLocation == loginLoc;
 
       if (!loggedIn && !goingToLogin) {
-        return LoginRoute().location;
+        return const LoginRoute().location;
       }
 
       // the user is logged in and headed to /login, no need to login again
@@ -76,12 +72,19 @@ class AppRouter {
       ],
     ),
     TypedGoRoute<AreasRoute>(path: "/data/areas"),
-    TypedGoRoute<HotelsRoute>(path: "/data/hotels"),
+    TypedGoRoute<HotelsRoute>(path: "/data/hotels", routes: []),
     TypedGoRoute<AirPortsRoute>(path: "/data/airports"),
+    TypedGoRoute<AddHotelRoute>(path: "/data/hotels/newhotel"),
   ]),
   TypedGoRoute<CountryRoute>(path: "/data/countries/:id"),
   TypedGoRoute<CityRoute>(path: "/data/cities/:id"),
   TypedGoRoute<ExcurtionsRoute>(path: "/excurtions"),
+  TypedShellRoute<TransfersRoute>(routes: [
+    TypedGoRoute<TransferContractsRoute>(path: "/transfer/contracts"),
+    TypedGoRoute<AddTransferContractsRoute>(path: "/transfer/contracts/new"),
+    TypedGoRoute<TransferBookingsRoute>(path: "/transfer/bookings"),
+    TypedGoRoute<TransferVehicleRoute>(path: "/transfer/vehicles"),
+  ]),
   TypedGoRoute<BookingsRoute>(path: "/bookings"),
   TypedGoRoute<BazarRoute>(path: "/bazar"),
   TypedGoRoute<SettingRoute>(path: "/setting"),
@@ -92,6 +95,66 @@ class MyShellRoute extends ShellRouteData {
     return HomePage(
       navigator: navigator,
       path: state.uri.toString(),
+    );
+  }
+}
+
+class TransferContractsRoute extends GoRouteData {
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return CustomTransitionPage(
+      child: Container(
+        child: Center(
+          child: Text("All Transfer Contract"),
+        ),
+      ),
+      transitionsBuilder: (_, a2, a, w) => SizeTransition(
+        sizeFactor: a2,
+        child: w,
+      ),
+    );
+  }
+}
+
+class TransferBookingsRoute extends GoRouteData {
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return CustomTransitionPage(
+      child: Container(
+        child: Center(
+          child: Text("Transfer Bookings Route"),
+        ),
+      ),
+      transitionsBuilder: (_, a2, a, w) => SizeTransition(
+        sizeFactor: a2,
+        child: w,
+      ),
+    );
+  }
+}
+
+class AddTransferContractsRoute extends GoRouteData {
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return CustomTransitionPage(
+      child: AddTransferContractPage(),
+      transitionsBuilder: (_, a2, a, w) => SizeTransition(
+        sizeFactor: a2,
+        child: w,
+      ),
+    );
+  }
+}
+
+class TransferVehicleRoute extends GoRouteData {
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return CustomTransitionPage(
+      child: VehiclePage(),
+      transitionsBuilder: (_, a2, a, w) => SizeTransition(
+        sizeFactor: a2,
+        child: w,
+      ),
     );
   }
 }
@@ -131,6 +194,23 @@ class DataRoute extends ShellRouteData {
     // TODO: implement pageBuilder
     return CustomTransitionPage(
         child: DataPage(
+          navigator: navigator,
+          path: state.uri.toString(),
+        ),
+        transitionsBuilder: (_, a1, a2, widget) => SizeTransition(
+              sizeFactor: a1,
+              child: widget,
+            ));
+  }
+}
+
+class TransfersRoute extends ShellRouteData {
+  @override
+  Page<void> pageBuilder(
+      BuildContext context, GoRouterState state, Widget navigator) {
+    // TODO: implement pageBuilder
+    return CustomTransitionPage(
+        child: TransfersPages(
           navigator: navigator,
           path: state.uri.toString(),
         ),
@@ -209,6 +289,19 @@ class AddCountryRoute extends GoRouteData {
   }
 }
 
+class AddHotelRoute extends GoRouteData {
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return CustomTransitionPage(
+        child: AddHotelPage(),
+        transitionsBuilder: (_, a1, a2, widget) => SizeTransition(
+              sizeFactor: a2,
+              axis: Axis.horizontal,
+              child: widget,
+            ));
+  }
+}
+
 class AddCityRoute extends GoRouteData {
   int? countryId;
   AddCityRoute({this.countryId});
@@ -245,11 +338,7 @@ class AreasRoute extends GoRouteData {
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) {
     return CustomTransitionPage(
-        child: Container(
-          child: Center(
-            child: Text("Areas"),
-          ),
-        ),
+        child: AreasPage(),
         transitionsBuilder: (context, an1, an2, w) {
           return SizeTransition(
             sizeFactor: an2,
@@ -261,12 +350,15 @@ class AreasRoute extends GoRouteData {
 
 class HotelsRoute extends GoRouteData {
   @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return Container(
-      child: Center(
-        child: Text("Hotels"),
-      ),
-    );
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return CustomTransitionPage(
+        child: HotelsPage(),
+        transitionsBuilder: (context, an1, an2, w) {
+          return SizeTransition(
+            sizeFactor: an2,
+            child: w,
+          );
+        });
   }
 }
 

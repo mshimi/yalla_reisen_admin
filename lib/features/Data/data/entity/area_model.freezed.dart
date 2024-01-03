@@ -22,7 +22,12 @@ AreaModel _$AreaModelFromJson(Map<String, dynamic> json) {
 mixin _$AreaModel {
   int? get id => throw _privateConstructorUsedError;
   String? get areaName => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false)
   List<HotelModel>? get hotels => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false)
+  CountryModel? get country => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false)
+  CityModel? get city => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +40,15 @@ abstract class $AreaModelCopyWith<$Res> {
   factory $AreaModelCopyWith(AreaModel value, $Res Function(AreaModel) then) =
       _$AreaModelCopyWithImpl<$Res, AreaModel>;
   @useResult
-  $Res call({int? id, String? areaName, List<HotelModel>? hotels});
+  $Res call(
+      {int? id,
+      String? areaName,
+      @JsonKey(includeIfNull: false) List<HotelModel>? hotels,
+      @JsonKey(includeIfNull: false) CountryModel? country,
+      @JsonKey(includeIfNull: false) CityModel? city});
+
+  $CountryModelCopyWith<$Res>? get country;
+  $CityModelCopyWith<$Res>? get city;
 }
 
 /// @nodoc
@@ -54,6 +67,8 @@ class _$AreaModelCopyWithImpl<$Res, $Val extends AreaModel>
     Object? id = freezed,
     Object? areaName = freezed,
     Object? hotels = freezed,
+    Object? country = freezed,
+    Object? city = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -68,7 +83,39 @@ class _$AreaModelCopyWithImpl<$Res, $Val extends AreaModel>
           ? _value.hotels
           : hotels // ignore: cast_nullable_to_non_nullable
               as List<HotelModel>?,
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as CountryModel?,
+      city: freezed == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as CityModel?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CountryModelCopyWith<$Res>? get country {
+    if (_value.country == null) {
+      return null;
+    }
+
+    return $CountryModelCopyWith<$Res>(_value.country!, (value) {
+      return _then(_value.copyWith(country: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CityModelCopyWith<$Res>? get city {
+    if (_value.city == null) {
+      return null;
+    }
+
+    return $CityModelCopyWith<$Res>(_value.city!, (value) {
+      return _then(_value.copyWith(city: value) as $Val);
+    });
   }
 }
 
@@ -80,7 +127,17 @@ abstract class _$$AreaModelImplCopyWith<$Res>
       __$$AreaModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String? areaName, List<HotelModel>? hotels});
+  $Res call(
+      {int? id,
+      String? areaName,
+      @JsonKey(includeIfNull: false) List<HotelModel>? hotels,
+      @JsonKey(includeIfNull: false) CountryModel? country,
+      @JsonKey(includeIfNull: false) CityModel? city});
+
+  @override
+  $CountryModelCopyWith<$Res>? get country;
+  @override
+  $CityModelCopyWith<$Res>? get city;
 }
 
 /// @nodoc
@@ -97,6 +154,8 @@ class __$$AreaModelImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? areaName = freezed,
     Object? hotels = freezed,
+    Object? country = freezed,
+    Object? city = freezed,
   }) {
     return _then(_$AreaModelImpl(
       id: freezed == id
@@ -111,6 +170,14 @@ class __$$AreaModelImplCopyWithImpl<$Res>
           ? _value._hotels
           : hotels // ignore: cast_nullable_to_non_nullable
               as List<HotelModel>?,
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as CountryModel?,
+      city: freezed == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as CityModel?,
     ));
   }
 }
@@ -119,7 +186,11 @@ class __$$AreaModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AreaModelImpl implements _AreaModel {
   const _$AreaModelImpl(
-      {this.id, this.areaName, final List<HotelModel>? hotels})
+      {this.id,
+      this.areaName,
+      @JsonKey(includeIfNull: false) final List<HotelModel>? hotels,
+      @JsonKey(includeIfNull: false) this.country,
+      @JsonKey(includeIfNull: false) this.city})
       : _hotels = hotels;
 
   factory _$AreaModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -131,6 +202,7 @@ class _$AreaModelImpl implements _AreaModel {
   final String? areaName;
   final List<HotelModel>? _hotels;
   @override
+  @JsonKey(includeIfNull: false)
   List<HotelModel>? get hotels {
     final value = _hotels;
     if (value == null) return null;
@@ -140,25 +212,34 @@ class _$AreaModelImpl implements _AreaModel {
   }
 
   @override
+  @JsonKey(includeIfNull: false)
+  final CountryModel? country;
+  @override
+  @JsonKey(includeIfNull: false)
+  final CityModel? city;
+
+  @override
   String toString() {
-    return 'AreaModel(id: $id, areaName: $areaName, hotels: $hotels)';
+    return 'AreaModel(id: $id, areaName: $areaName, hotels: $hotels, country: $country, city: $city)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AreaModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.areaName, areaName) ||
                 other.areaName == areaName) &&
-            const DeepCollectionEquality().equals(other._hotels, _hotels));
+            const DeepCollectionEquality().equals(other._hotels, _hotels) &&
+            (identical(other.country, country) || other.country == country) &&
+            (identical(other.city, city) || other.city == city));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, areaName, const DeepCollectionEquality().hash(_hotels));
+  int get hashCode => Object.hash(runtimeType, id, areaName,
+      const DeepCollectionEquality().hash(_hotels), country, city);
 
   @JsonKey(ignore: true)
   @override
@@ -178,7 +259,9 @@ abstract class _AreaModel implements AreaModel {
   const factory _AreaModel(
       {final int? id,
       final String? areaName,
-      final List<HotelModel>? hotels}) = _$AreaModelImpl;
+      @JsonKey(includeIfNull: false) final List<HotelModel>? hotels,
+      @JsonKey(includeIfNull: false) final CountryModel? country,
+      @JsonKey(includeIfNull: false) final CityModel? city}) = _$AreaModelImpl;
 
   factory _AreaModel.fromJson(Map<String, dynamic> json) =
       _$AreaModelImpl.fromJson;
@@ -188,7 +271,14 @@ abstract class _AreaModel implements AreaModel {
   @override
   String? get areaName;
   @override
+  @JsonKey(includeIfNull: false)
   List<HotelModel>? get hotels;
+  @override
+  @JsonKey(includeIfNull: false)
+  CountryModel? get country;
+  @override
+  @JsonKey(includeIfNull: false)
+  CityModel? get city;
   @override
   @JsonKey(ignore: true)
   _$$AreaModelImplCopyWith<_$AreaModelImpl> get copyWith =>

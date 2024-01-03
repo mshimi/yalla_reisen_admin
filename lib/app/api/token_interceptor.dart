@@ -13,21 +13,17 @@ class TokenInterceptor extends Interceptor {
       options.headers['Authorization'] = 'Bearer $token';
     }
 
-    print(" headers:  ${options.data.toString()}");
-
     super.onRequest(options, handler);
   }
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    print(" response : ${response.data!}");
     super.onResponse(response, handler);
   }
 
   @override
   Future<void> onError(
       DioException err, ErrorInterceptorHandler handler) async {
-    print(" Error: ${err.message}");
     if (err.response != null && err.response!.statusCode == 401) {
       getIt<AuthenticationBloc>()
           .add(const AuthenticationEvent.unAuthenticated());

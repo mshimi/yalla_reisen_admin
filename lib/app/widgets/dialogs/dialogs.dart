@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:gap/gap.dart';
+import 'package:yalla_reisen_withspringboot/app/widgets/buttons/elevated_button_with_icon.dart';
 import 'package:yalla_reisen_withspringboot/app/widgets/custom_text_formfield.dart';
 import 'package:yalla_reisen_withspringboot/app/widgets/data_table.dart';
-import 'package:yalla_reisen_withspringboot/app/widgets/elevated_button_with_icon.dart';
 import 'package:yalla_reisen_withspringboot/app/widgets/widget_form_builder.dart';
 
 class Dialogs {
@@ -65,6 +65,9 @@ class Dialogs {
     required void Function() confirmFunktion,
     String confirmButtonText = "confirm",
     String cancelButtonText = "cancel",
+    required String header,
+    required List<CustomTextFormField> formFields,
+    required String descreption,
     required void Function() cancelFunktion,
     required GlobalKey<FormBuilderState> formKey,
   }) {
@@ -86,15 +89,12 @@ class Dialogs {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const PageHeader(
-                    header: "New Area", descreption: "Add Area to Database"),
+                 PageHeader(
+                    header: header, descreption: descreption),
                 Gap(15),
-                FormBuilderWidget(childeren: const [
-                  FittedBox(
-                    child: CustomTextFormField(
-                        name: "areaName", titel: "Area Name"),
-                  ),
-                ], formKey: formKey),
+                FormBuilderWidget(childeren: 
+                formFields.map((e) => FittedBox(child: e,)).toList()
+                , formKey: formKey),
                 Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

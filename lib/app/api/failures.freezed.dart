@@ -120,7 +120,7 @@ class _$$ServerFailureImpl implements _$ServerFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$$ServerFailureImpl);
   }
@@ -243,7 +243,7 @@ class _$$UnAuthenticatedFailureImpl implements _$UnAuthenticatedFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$$UnAuthenticatedFailureImpl);
@@ -383,7 +383,7 @@ class _$$BadRequestFailureImpl implements _$BadRequestFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$$BadRequestFailureImpl &&
@@ -519,7 +519,7 @@ class _$$UnknownFailureImpl implements _$UnknownFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$$UnknownFailureImpl);
   }
@@ -640,7 +640,7 @@ class _$$BadResponseImpl implements _$BadResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$$BadResponseImpl);
   }

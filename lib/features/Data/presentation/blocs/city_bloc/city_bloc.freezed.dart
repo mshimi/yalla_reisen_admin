@@ -23,6 +23,7 @@ mixin _$CityEvent {
     required TResult Function(CityModel cityModel, int countryId) update,
     required TResult Function(MultipartFile image, int cityId) uploadImage,
     required TResult Function(int cityImageId) deleteImage,
+    required TResult Function(int areaId, int cityId) deleteArea,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$CityEvent {
     TResult? Function(CityModel cityModel, int countryId)? update,
     TResult? Function(MultipartFile image, int cityId)? uploadImage,
     TResult? Function(int cityImageId)? deleteImage,
+    TResult? Function(int areaId, int cityId)? deleteArea,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$CityEvent {
     TResult Function(CityModel cityModel, int countryId)? update,
     TResult Function(MultipartFile image, int cityId)? uploadImage,
     TResult Function(int cityImageId)? deleteImage,
+    TResult Function(int areaId, int cityId)? deleteArea,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$CityEvent {
     required TResult Function(_Updated value) update,
     required TResult Function(_UploadImage value) uploadImage,
     required TResult Function(_DeleteImage value) deleteImage,
+    required TResult Function(_DeleteArea value) deleteArea,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$CityEvent {
     TResult? Function(_Updated value)? update,
     TResult? Function(_UploadImage value)? uploadImage,
     TResult? Function(_DeleteImage value)? deleteImage,
+    TResult? Function(_DeleteArea value)? deleteArea,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$CityEvent {
     TResult Function(_Updated value)? update,
     TResult Function(_UploadImage value)? uploadImage,
     TResult Function(_DeleteImage value)? deleteImage,
+    TResult Function(_DeleteArea value)? deleteArea,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -136,7 +142,7 @@ class _$StartedImpl implements _Started {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StartedImpl &&
@@ -160,6 +166,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(CityModel cityModel, int countryId) update,
     required TResult Function(MultipartFile image, int cityId) uploadImage,
     required TResult Function(int cityImageId) deleteImage,
+    required TResult Function(int areaId, int cityId) deleteArea,
   }) {
     return started(id);
   }
@@ -172,6 +179,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(CityModel cityModel, int countryId)? update,
     TResult? Function(MultipartFile image, int cityId)? uploadImage,
     TResult? Function(int cityImageId)? deleteImage,
+    TResult? Function(int areaId, int cityId)? deleteArea,
   }) {
     return started?.call(id);
   }
@@ -184,6 +192,7 @@ class _$StartedImpl implements _Started {
     TResult Function(CityModel cityModel, int countryId)? update,
     TResult Function(MultipartFile image, int cityId)? uploadImage,
     TResult Function(int cityImageId)? deleteImage,
+    TResult Function(int areaId, int cityId)? deleteArea,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -200,6 +209,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_Updated value) update,
     required TResult Function(_UploadImage value) uploadImage,
     required TResult Function(_DeleteImage value) deleteImage,
+    required TResult Function(_DeleteArea value) deleteArea,
   }) {
     return started(this);
   }
@@ -212,6 +222,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_Updated value)? update,
     TResult? Function(_UploadImage value)? uploadImage,
     TResult? Function(_DeleteImage value)? deleteImage,
+    TResult? Function(_DeleteArea value)? deleteArea,
   }) {
     return started?.call(this);
   }
@@ -224,6 +235,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_Updated value)? update,
     TResult Function(_UploadImage value)? uploadImage,
     TResult Function(_DeleteImage value)? deleteImage,
+    TResult Function(_DeleteArea value)? deleteArea,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -287,7 +299,7 @@ class _$DeletedImpl implements _Deleted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeletedImpl &&
@@ -311,6 +323,7 @@ class _$DeletedImpl implements _Deleted {
     required TResult Function(CityModel cityModel, int countryId) update,
     required TResult Function(MultipartFile image, int cityId) uploadImage,
     required TResult Function(int cityImageId) deleteImage,
+    required TResult Function(int areaId, int cityId) deleteArea,
   }) {
     return delete(id);
   }
@@ -323,6 +336,7 @@ class _$DeletedImpl implements _Deleted {
     TResult? Function(CityModel cityModel, int countryId)? update,
     TResult? Function(MultipartFile image, int cityId)? uploadImage,
     TResult? Function(int cityImageId)? deleteImage,
+    TResult? Function(int areaId, int cityId)? deleteArea,
   }) {
     return delete?.call(id);
   }
@@ -335,6 +349,7 @@ class _$DeletedImpl implements _Deleted {
     TResult Function(CityModel cityModel, int countryId)? update,
     TResult Function(MultipartFile image, int cityId)? uploadImage,
     TResult Function(int cityImageId)? deleteImage,
+    TResult Function(int areaId, int cityId)? deleteArea,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -351,6 +366,7 @@ class _$DeletedImpl implements _Deleted {
     required TResult Function(_Updated value) update,
     required TResult Function(_UploadImage value) uploadImage,
     required TResult Function(_DeleteImage value) deleteImage,
+    required TResult Function(_DeleteArea value) deleteArea,
   }) {
     return delete(this);
   }
@@ -363,6 +379,7 @@ class _$DeletedImpl implements _Deleted {
     TResult? Function(_Updated value)? update,
     TResult? Function(_UploadImage value)? uploadImage,
     TResult? Function(_DeleteImage value)? deleteImage,
+    TResult? Function(_DeleteArea value)? deleteArea,
   }) {
     return delete?.call(this);
   }
@@ -375,6 +392,7 @@ class _$DeletedImpl implements _Deleted {
     TResult Function(_Updated value)? update,
     TResult Function(_UploadImage value)? uploadImage,
     TResult Function(_DeleteImage value)? deleteImage,
+    TResult Function(_DeleteArea value)? deleteArea,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -455,7 +473,7 @@ class _$UpdatedImpl implements _Updated {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdatedImpl &&
@@ -482,6 +500,7 @@ class _$UpdatedImpl implements _Updated {
     required TResult Function(CityModel cityModel, int countryId) update,
     required TResult Function(MultipartFile image, int cityId) uploadImage,
     required TResult Function(int cityImageId) deleteImage,
+    required TResult Function(int areaId, int cityId) deleteArea,
   }) {
     return update(cityModel, countryId);
   }
@@ -494,6 +513,7 @@ class _$UpdatedImpl implements _Updated {
     TResult? Function(CityModel cityModel, int countryId)? update,
     TResult? Function(MultipartFile image, int cityId)? uploadImage,
     TResult? Function(int cityImageId)? deleteImage,
+    TResult? Function(int areaId, int cityId)? deleteArea,
   }) {
     return update?.call(cityModel, countryId);
   }
@@ -506,6 +526,7 @@ class _$UpdatedImpl implements _Updated {
     TResult Function(CityModel cityModel, int countryId)? update,
     TResult Function(MultipartFile image, int cityId)? uploadImage,
     TResult Function(int cityImageId)? deleteImage,
+    TResult Function(int areaId, int cityId)? deleteArea,
     required TResult orElse(),
   }) {
     if (update != null) {
@@ -522,6 +543,7 @@ class _$UpdatedImpl implements _Updated {
     required TResult Function(_Updated value) update,
     required TResult Function(_UploadImage value) uploadImage,
     required TResult Function(_DeleteImage value) deleteImage,
+    required TResult Function(_DeleteArea value) deleteArea,
   }) {
     return update(this);
   }
@@ -534,6 +556,7 @@ class _$UpdatedImpl implements _Updated {
     TResult? Function(_Updated value)? update,
     TResult? Function(_UploadImage value)? uploadImage,
     TResult? Function(_DeleteImage value)? deleteImage,
+    TResult? Function(_DeleteArea value)? deleteArea,
   }) {
     return update?.call(this);
   }
@@ -546,6 +569,7 @@ class _$UpdatedImpl implements _Updated {
     TResult Function(_Updated value)? update,
     TResult Function(_UploadImage value)? uploadImage,
     TResult Function(_DeleteImage value)? deleteImage,
+    TResult Function(_DeleteArea value)? deleteArea,
     required TResult orElse(),
   }) {
     if (update != null) {
@@ -619,7 +643,7 @@ class _$UploadImageImpl implements _UploadImage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UploadImageImpl &&
@@ -644,6 +668,7 @@ class _$UploadImageImpl implements _UploadImage {
     required TResult Function(CityModel cityModel, int countryId) update,
     required TResult Function(MultipartFile image, int cityId) uploadImage,
     required TResult Function(int cityImageId) deleteImage,
+    required TResult Function(int areaId, int cityId) deleteArea,
   }) {
     return uploadImage(image, cityId);
   }
@@ -656,6 +681,7 @@ class _$UploadImageImpl implements _UploadImage {
     TResult? Function(CityModel cityModel, int countryId)? update,
     TResult? Function(MultipartFile image, int cityId)? uploadImage,
     TResult? Function(int cityImageId)? deleteImage,
+    TResult? Function(int areaId, int cityId)? deleteArea,
   }) {
     return uploadImage?.call(image, cityId);
   }
@@ -668,6 +694,7 @@ class _$UploadImageImpl implements _UploadImage {
     TResult Function(CityModel cityModel, int countryId)? update,
     TResult Function(MultipartFile image, int cityId)? uploadImage,
     TResult Function(int cityImageId)? deleteImage,
+    TResult Function(int areaId, int cityId)? deleteArea,
     required TResult orElse(),
   }) {
     if (uploadImage != null) {
@@ -684,6 +711,7 @@ class _$UploadImageImpl implements _UploadImage {
     required TResult Function(_Updated value) update,
     required TResult Function(_UploadImage value) uploadImage,
     required TResult Function(_DeleteImage value) deleteImage,
+    required TResult Function(_DeleteArea value) deleteArea,
   }) {
     return uploadImage(this);
   }
@@ -696,6 +724,7 @@ class _$UploadImageImpl implements _UploadImage {
     TResult? Function(_Updated value)? update,
     TResult? Function(_UploadImage value)? uploadImage,
     TResult? Function(_DeleteImage value)? deleteImage,
+    TResult? Function(_DeleteArea value)? deleteArea,
   }) {
     return uploadImage?.call(this);
   }
@@ -708,6 +737,7 @@ class _$UploadImageImpl implements _UploadImage {
     TResult Function(_Updated value)? update,
     TResult Function(_UploadImage value)? uploadImage,
     TResult Function(_DeleteImage value)? deleteImage,
+    TResult Function(_DeleteArea value)? deleteArea,
     required TResult orElse(),
   }) {
     if (uploadImage != null) {
@@ -774,7 +804,7 @@ class _$DeleteImageImpl implements _DeleteImage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteImageImpl &&
@@ -799,6 +829,7 @@ class _$DeleteImageImpl implements _DeleteImage {
     required TResult Function(CityModel cityModel, int countryId) update,
     required TResult Function(MultipartFile image, int cityId) uploadImage,
     required TResult Function(int cityImageId) deleteImage,
+    required TResult Function(int areaId, int cityId) deleteArea,
   }) {
     return deleteImage(cityImageId);
   }
@@ -811,6 +842,7 @@ class _$DeleteImageImpl implements _DeleteImage {
     TResult? Function(CityModel cityModel, int countryId)? update,
     TResult? Function(MultipartFile image, int cityId)? uploadImage,
     TResult? Function(int cityImageId)? deleteImage,
+    TResult? Function(int areaId, int cityId)? deleteArea,
   }) {
     return deleteImage?.call(cityImageId);
   }
@@ -823,6 +855,7 @@ class _$DeleteImageImpl implements _DeleteImage {
     TResult Function(CityModel cityModel, int countryId)? update,
     TResult Function(MultipartFile image, int cityId)? uploadImage,
     TResult Function(int cityImageId)? deleteImage,
+    TResult Function(int areaId, int cityId)? deleteArea,
     required TResult orElse(),
   }) {
     if (deleteImage != null) {
@@ -839,6 +872,7 @@ class _$DeleteImageImpl implements _DeleteImage {
     required TResult Function(_Updated value) update,
     required TResult Function(_UploadImage value) uploadImage,
     required TResult Function(_DeleteImage value) deleteImage,
+    required TResult Function(_DeleteArea value) deleteArea,
   }) {
     return deleteImage(this);
   }
@@ -851,6 +885,7 @@ class _$DeleteImageImpl implements _DeleteImage {
     TResult? Function(_Updated value)? update,
     TResult? Function(_UploadImage value)? uploadImage,
     TResult? Function(_DeleteImage value)? deleteImage,
+    TResult? Function(_DeleteArea value)? deleteArea,
   }) {
     return deleteImage?.call(this);
   }
@@ -863,6 +898,7 @@ class _$DeleteImageImpl implements _DeleteImage {
     TResult Function(_Updated value)? update,
     TResult Function(_UploadImage value)? uploadImage,
     TResult Function(_DeleteImage value)? deleteImage,
+    TResult Function(_DeleteArea value)? deleteArea,
     required TResult orElse(),
   }) {
     if (deleteImage != null) {
@@ -879,6 +915,174 @@ abstract class _DeleteImage implements CityEvent {
   int get cityImageId;
   @JsonKey(ignore: true)
   _$$DeleteImageImplCopyWith<_$DeleteImageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteAreaImplCopyWith<$Res> {
+  factory _$$DeleteAreaImplCopyWith(
+          _$DeleteAreaImpl value, $Res Function(_$DeleteAreaImpl) then) =
+      __$$DeleteAreaImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int areaId, int cityId});
+}
+
+/// @nodoc
+class __$$DeleteAreaImplCopyWithImpl<$Res>
+    extends _$CityEventCopyWithImpl<$Res, _$DeleteAreaImpl>
+    implements _$$DeleteAreaImplCopyWith<$Res> {
+  __$$DeleteAreaImplCopyWithImpl(
+      _$DeleteAreaImpl _value, $Res Function(_$DeleteAreaImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? areaId = null,
+    Object? cityId = null,
+  }) {
+    return _then(_$DeleteAreaImpl(
+      areaId: null == areaId
+          ? _value.areaId
+          : areaId // ignore: cast_nullable_to_non_nullable
+              as int,
+      cityId: null == cityId
+          ? _value.cityId
+          : cityId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteAreaImpl implements _DeleteArea {
+  const _$DeleteAreaImpl({required this.areaId, required this.cityId});
+
+  @override
+  final int areaId;
+  @override
+  final int cityId;
+
+  @override
+  String toString() {
+    return 'CityEvent.deleteArea(areaId: $areaId, cityId: $cityId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteAreaImpl &&
+            (identical(other.areaId, areaId) || other.areaId == areaId) &&
+            (identical(other.cityId, cityId) || other.cityId == cityId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, areaId, cityId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteAreaImplCopyWith<_$DeleteAreaImpl> get copyWith =>
+      __$$DeleteAreaImplCopyWithImpl<_$DeleteAreaImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int id) started,
+    required TResult Function(int id) delete,
+    required TResult Function(CityModel cityModel, int countryId) update,
+    required TResult Function(MultipartFile image, int cityId) uploadImage,
+    required TResult Function(int cityImageId) deleteImage,
+    required TResult Function(int areaId, int cityId) deleteArea,
+  }) {
+    return deleteArea(areaId, cityId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int id)? started,
+    TResult? Function(int id)? delete,
+    TResult? Function(CityModel cityModel, int countryId)? update,
+    TResult? Function(MultipartFile image, int cityId)? uploadImage,
+    TResult? Function(int cityImageId)? deleteImage,
+    TResult? Function(int areaId, int cityId)? deleteArea,
+  }) {
+    return deleteArea?.call(areaId, cityId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int id)? started,
+    TResult Function(int id)? delete,
+    TResult Function(CityModel cityModel, int countryId)? update,
+    TResult Function(MultipartFile image, int cityId)? uploadImage,
+    TResult Function(int cityImageId)? deleteImage,
+    TResult Function(int areaId, int cityId)? deleteArea,
+    required TResult orElse(),
+  }) {
+    if (deleteArea != null) {
+      return deleteArea(areaId, cityId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Deleted value) delete,
+    required TResult Function(_Updated value) update,
+    required TResult Function(_UploadImage value) uploadImage,
+    required TResult Function(_DeleteImage value) deleteImage,
+    required TResult Function(_DeleteArea value) deleteArea,
+  }) {
+    return deleteArea(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Deleted value)? delete,
+    TResult? Function(_Updated value)? update,
+    TResult? Function(_UploadImage value)? uploadImage,
+    TResult? Function(_DeleteImage value)? deleteImage,
+    TResult? Function(_DeleteArea value)? deleteArea,
+  }) {
+    return deleteArea?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Deleted value)? delete,
+    TResult Function(_Updated value)? update,
+    TResult Function(_UploadImage value)? uploadImage,
+    TResult Function(_DeleteImage value)? deleteImage,
+    TResult Function(_DeleteArea value)? deleteArea,
+    required TResult orElse(),
+  }) {
+    if (deleteArea != null) {
+      return deleteArea(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteArea implements CityEvent {
+  const factory _DeleteArea(
+      {required final int areaId,
+      required final int cityId}) = _$DeleteAreaImpl;
+
+  int get areaId;
+  int get cityId;
+  @JsonKey(ignore: true)
+  _$$DeleteAreaImplCopyWith<_$DeleteAreaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -986,7 +1190,7 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
@@ -1134,7 +1338,7 @@ class _$SuccessImpl implements _Success {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
@@ -1300,7 +1504,7 @@ class _$FailedImpl implements _Failed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FailedImpl &&
@@ -1434,7 +1638,7 @@ class _$DeletedStateImpl implements _DeletedState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$DeletedStateImpl);
   }
@@ -1554,7 +1758,7 @@ class _$ImageUpdateImpl implements _ImageUpdate {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$ImageUpdateImpl);
   }

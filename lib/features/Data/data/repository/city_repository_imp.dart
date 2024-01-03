@@ -30,8 +30,7 @@ class CityRepositoryImpl implements CityRepository {
     try {
       var response =
           await restClient.findCitiesByKeyWord(keyWord: {"keyword": keyWord});
-      print(response);
-      return Right(response);
+      return Right(response.map((e) => e.toCityModel()).toList());
     } on DioException catch (e) {
       return Left(ApiFailure.fromDioExceptionType(dioExceptionType: e.type));
     }

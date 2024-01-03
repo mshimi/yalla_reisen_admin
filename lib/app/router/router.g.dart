@@ -57,6 +57,10 @@ RouteBase get $myShellRoute => ShellRouteData.$route(
               path: '/data/airports',
               factory: $AirPortsRouteExtension._fromState,
             ),
+            GoRouteData.$route(
+              path: '/data/hotels/newhotel',
+              factory: $AddHotelRouteExtension._fromState,
+            ),
           ],
         ),
         GoRouteData.$route(
@@ -70,6 +74,27 @@ RouteBase get $myShellRoute => ShellRouteData.$route(
         GoRouteData.$route(
           path: '/excurtions',
           factory: $ExcurtionsRouteExtension._fromState,
+        ),
+        ShellRouteData.$route(
+          factory: $TransfersRouteExtension._fromState,
+          routes: [
+            GoRouteData.$route(
+              path: '/transfer/contracts',
+              factory: $TransferContractsRouteExtension._fromState,
+            ),
+            GoRouteData.$route(
+              path: '/transfer/contracts/new',
+              factory: $AddTransferContractsRouteExtension._fromState,
+            ),
+            GoRouteData.$route(
+              path: '/transfer/bookings',
+              factory: $TransferBookingsRouteExtension._fromState,
+            ),
+            GoRouteData.$route(
+              path: '/transfer/vehicles',
+              factory: $TransferVehicleRouteExtension._fromState,
+            ),
+          ],
         ),
         GoRouteData.$route(
           path: '/bookings',
@@ -253,6 +278,23 @@ extension $AirPortsRouteExtension on AirPortsRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
+extension $AddHotelRouteExtension on AddHotelRoute {
+  static AddHotelRoute _fromState(GoRouterState state) => AddHotelRoute();
+
+  String get location => GoRouteData.$location(
+        '/data/hotels/newhotel',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
 extension $CountryRouteExtension on CountryRoute {
   static CountryRoute _fromState(GoRouterState state) => CountryRoute(
         id: int.parse(state.pathParameters['id']!),
@@ -296,6 +338,82 @@ extension $ExcurtionsRouteExtension on ExcurtionsRoute {
 
   String get location => GoRouteData.$location(
         '/excurtions',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $TransfersRouteExtension on TransfersRoute {
+  static TransfersRoute _fromState(GoRouterState state) => TransfersRoute();
+}
+
+extension $TransferContractsRouteExtension on TransferContractsRoute {
+  static TransferContractsRoute _fromState(GoRouterState state) =>
+      TransferContractsRoute();
+
+  String get location => GoRouteData.$location(
+        '/transfer/contracts',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $AddTransferContractsRouteExtension on AddTransferContractsRoute {
+  static AddTransferContractsRoute _fromState(GoRouterState state) =>
+      AddTransferContractsRoute();
+
+  String get location => GoRouteData.$location(
+        '/transfer/contracts/new',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $TransferBookingsRouteExtension on TransferBookingsRoute {
+  static TransferBookingsRoute _fromState(GoRouterState state) =>
+      TransferBookingsRoute();
+
+  String get location => GoRouteData.$location(
+        '/transfer/bookings',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $TransferVehicleRouteExtension on TransferVehicleRoute {
+  static TransferVehicleRoute _fromState(GoRouterState state) =>
+      TransferVehicleRoute();
+
+  String get location => GoRouteData.$location(
+        '/transfer/vehicles',
       );
 
   void go(BuildContext context) => context.go(location);

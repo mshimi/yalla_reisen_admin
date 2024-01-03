@@ -124,7 +124,7 @@ class _$LoginRequestImpl implements _LoginRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoginRequestImpl &&

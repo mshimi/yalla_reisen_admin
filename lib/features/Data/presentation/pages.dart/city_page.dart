@@ -10,13 +10,16 @@ import 'package:go_router/go_router.dart';
 import 'package:yalla_reisen_withspringboot/app/di.dart';
 import 'package:yalla_reisen_withspringboot/app/file_picker.dart';
 import 'package:yalla_reisen_withspringboot/app/router/router.dart';
+import 'package:yalla_reisen_withspringboot/app/widgets/buttons/custom_icon_button.dart';
+import 'package:yalla_reisen_withspringboot/app/widgets/buttons/elevated_button_with_icon.dart';
 import 'package:yalla_reisen_withspringboot/app/widgets/custom_text_formfield.dart';
 import 'package:yalla_reisen_withspringboot/app/widgets/data_table.dart';
 import 'package:yalla_reisen_withspringboot/app/widgets/dialogs/dialogs.dart';
-import 'package:yalla_reisen_withspringboot/app/widgets/elevated_button_with_icon.dart';
 import 'package:yalla_reisen_withspringboot/app/widgets/loading_widget.dart';
 import 'package:yalla_reisen_withspringboot/app/widgets/widget_form_builder.dart';
+import 'package:yalla_reisen_withspringboot/features/Data/Domain/repository/area_repository.dart';
 import 'package:yalla_reisen_withspringboot/features/Data/Domain/repository/city_repository.dart';
+import 'package:yalla_reisen_withspringboot/features/Data/data/entity/area_model.dart';
 import 'package:yalla_reisen_withspringboot/features/Data/data/entity/city_model.dart';
 import 'package:yalla_reisen_withspringboot/features/Data/presentation/blocs/city_bloc/city_bloc.dart';
 import 'package:yalla_reisen_withspringboot/features/Data/presentation/pages.dart/add_city_page.dart';
@@ -31,6 +34,7 @@ class CityPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => CityBloc(
+        areaRepository: getIt<AreaRepository>(),
         cityRepository: getIt<CityRepository>(),
       )..add(CityEvent.started(id: id)),
       child: BlocListener<CityBloc, CityState>(
@@ -117,9 +121,34 @@ class _SuccessGotData extends StatelessWidget {
                       titel: "Add Area",
                       onPressed: () {
                         Dialogs.showFormDialog(
+                            header: "Areas",
+                            descreption: "Add new Area",
+                            formFields: [
+                              CustomTextFormField(
+                                name: "areaName",
+                                titel: "Area Name",
+                                validator: (p0) {
+                                  if (p0 == null) {
+                                    return "Area Name is requierd";
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ],
                             confirmButtonText: "Save",
                             context: context,
-                            confirmFunktion: () {},
+                            confirmFunktion: () async {
+                              if (addAreaFormKey.currentState!
+                                  .saveAndValidate()) {
+                                AreaModel areaModel = AreaModel.fromJson(
+                                    addAreaFormKey.currentState!.value);
+
+                                await getIt<AreaRepository>().saveArea(
+                                    areaModel: areaModel,
+                                    cityId: cityModel.id!);
+                              }
+                              context.pop();
+                            },
                             cancelFunktion: () {
                               context.pop();
                             },
@@ -130,11 +159,21 @@ class _SuccessGotData extends StatelessWidget {
               columns: const [
                 DataColumn2(label: Text("id")),
                 DataColumn2(label: Text("Area Name")),
+                DataColumn2(label: Text("Delete")),
               ],
               rows: cityModel.areas!
                   .map((e) => DataRow2(cells: [
                         DataCell(Text(e.id.toString())),
                         DataCell(Text(e.areaName!)),
+                        DataCell(CustomIconButton(
+                          onPressed: () async {
+                            BlocProvider.of<CityBloc>(context).add(
+                                CityEvent.deleteArea(
+                                    areaId: e.id!, cityId: e.city!.id!));
+                          },
+                          iconData: Icons.delete_forever_sharp,
+                          color: Colors.red,
+                        )),
                       ]))
                   .toList()),
           const Gap(20),

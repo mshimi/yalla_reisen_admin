@@ -18,50 +18,54 @@ class CustomDataTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8),
-      child: Container(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            if (pageHeader != null) pageHeader!,
-            Container(
-              height: (rows.length * 40) + 60,
-              child: DataTable2(
-                dataRowHeight: 40,
-                isVerticalScrollBarVisible: true,
-                isHorizontalScrollBarVisible: true,
-                showBottomBorder: true,
-                headingRowHeight: headingRowheight,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    12,
+    return Expanded(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 8),
+        child: Container(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              if (pageHeader != null) pageHeader!,
+              Container(
+                height: (rows.length * 40) + 60,
+                child: DataTable2(
+                  dataRowHeight: 40,
+                  isVerticalScrollBarVisible: true,
+                  isHorizontalScrollBarVisible: true,
+                  showBottomBorder: true,
+                  headingRowHeight: headingRowheight,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                      12,
+                    ),
+                  ),
+                  headingRowColor: MaterialStatePropertyAll(
+                    Colors.blue[900],
+                  ),
+                  headingTextStyle: Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                  columns: columns,
+                  rows: rows,
+                ),
+              ),
+              Spacer(),
+              Container(
+                alignment: Alignment.bottomRight,
+                padding: EdgeInsets.only(top: 8),
+                child: Text(
+                  "Total Rows: ${rows.length}",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue[900],
                   ),
                 ),
-                headingRowColor: MaterialStatePropertyAll(
-                  Colors.blue[900],
-                ),
-                headingTextStyle: Theme.of(context)
-                    .textTheme
-                    .bodyLarge!
-                    .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-                columns: columns,
-                rows: rows,
               ),
-            ),
-            Container(
-              alignment: Alignment.bottomRight,
-              padding: EdgeInsets.only(top: 8),
-              child: Text(
-                "Total Rows: ${rows.length}",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue[900],
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

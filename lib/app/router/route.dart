@@ -76,6 +76,34 @@ class AppRoutes {
               path: "/data/airports"),
         ]),
     AppRoute(
+      function: (context, {id}) => TransferContractsRoute().go(context),
+      name: "Transfer",
+      path: "/transfer",
+      icon: Icons.directions_bus_filled_rounded,
+      subRoutes: [
+        AppRoute(
+          name: "Contracts",
+          path: "/transfer/contracts",
+          function: (context, {id}) => TransferContractsRoute().go(context),
+        ),
+        AppRoute(
+          name: "New Contract",
+          path: "/transfer/contracts/new",
+          function: (context, {id}) => AddTransferContractsRoute().go(context),
+        ),
+        AppRoute(
+          name: "vehicles",
+          path: "/transfer/vehicles",
+          function: (context, {id}) => TransferVehicleRoute().go(context),
+        ),
+        // AppRoute(
+        //   name: "Bookings",
+        //   path: "/transfer/bookings",
+        //   function: (context, {id}) => TransferBookingsRoute().go(context),
+        // ),
+      ],
+    ),
+    AppRoute(
         function: (context, {id}) => ExcurtionsRoute().go(context),
         name: "Excurtions",
         path: "/excurtions",

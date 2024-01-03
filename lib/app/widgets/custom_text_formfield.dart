@@ -10,6 +10,7 @@ class CustomTextFormField extends StatelessWidget {
     this.initialValue,
     this.validator,
     this.suffixIcon,
+    this.constraints = const BoxConstraints(minWidth: 150, maxWidth: 300),
   });
 
   final String titel;
@@ -18,7 +19,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final String? initialValue;
   final Widget? suffixIcon;
-
+  final BoxConstraints constraints;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +27,7 @@ class CustomTextFormField extends StatelessWidget {
       child: Row(
         children: [
           ConstrainedBox(
-              constraints: const BoxConstraints(minWidth: 150, maxWidth: 300),
+              constraints: constraints,
               child: Text(
                 titel,
                 style: Theme.of(context).textTheme.labelLarge,

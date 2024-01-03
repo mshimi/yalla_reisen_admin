@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:yalla_reisen_withspringboot/app/api/failures.dart';
+import 'package:yalla_reisen_withspringboot/features/Data/Domain/repository/area_repository.dart';
 import 'package:yalla_reisen_withspringboot/features/Data/Domain/repository/city_repository.dart';
 import 'package:yalla_reisen_withspringboot/features/Data/data/entity/city_model.dart';
 
@@ -11,7 +12,9 @@ part 'city_bloc.freezed.dart';
 
 class CityBloc extends Bloc<CityEvent, CityState> {
   final CityRepository cityRepository;
-  CityBloc({required this.cityRepository}) : super(CityState.initial()) {
+  AreaRepository areaRepository;
+  CityBloc({required this.cityRepository, required this.areaRepository})
+      : super(CityState.initial()) {
     on<CityEvent>((event, emit) async {
       if (state.maybeMap(
         orElse: () => true,
@@ -21,12 +24,13 @@ class CityBloc extends Bloc<CityEvent, CityState> {
       }
 
       CityState? newState = await event.when(
-          started: (id) async => await _getCityById(id),
-          uploadImage: (image, cityId) async =>
-              await _updateImage(image, cityId),
-          deleteImage: (cityImageId) async => await _deleteImage(cityImageId),
-          delete: (id) async => await _deleteCity(id),
-          update: (cityModel, countryId) => _updateCity(cityModel));
+        started: (id) async => await _getCityById(id),
+        uploadImage: (image, cityId) async => await _updateImage(image, cityId),
+        deleteImage: (cityImageId) async => await _deleteImage(cityImageId),
+        delete: (id) async => await _deleteCity(id),
+        update: (cityModel, countryId) => _updateCity(cityModel),
+        deleteArea: (areaId, cityId) => _deleteArea(areaId, cityId),
+      );
 
       if (newState != null) {
         emit(newState);
@@ -70,8 +74,13 @@ class CityBloc extends Bloc<CityEvent, CityState> {
   }
 
   Future<CityState> _deleteImage(int cityImageId) async {
-    var response = await cityRepository.deleteCity(id: cityImageId);
+    var response = await cityRepository.deleteCityImage(imageId: cityImageId);
     return response.fold(
         (l) => _getCityById(cityImageId), (r) => _getCityById(cityImageId));
+  }
+
+  Future<CityState> _deleteArea(int areaId, cityId) async {
+    await areaRepository.deleteArea(id: areaId);
+    return _getCityById(cityId);
   }
 }

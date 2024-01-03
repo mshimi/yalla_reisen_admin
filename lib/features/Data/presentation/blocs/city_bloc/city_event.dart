@@ -12,4 +12,7 @@ class CityEvent with _$CityEvent {
 
   const factory CityEvent.deleteImage({required int cityImageId}) =
       _DeleteImage;
+
+        const factory CityEvent.deleteArea({required int areaId, required int cityId}) =
+      _DeleteArea;
 }

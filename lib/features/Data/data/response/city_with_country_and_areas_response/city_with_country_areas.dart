@@ -17,3 +17,17 @@ class CityWithCountryAndAreasResponse with _$CityWithCountryAndAreasResponse {
   factory CityWithCountryAndAreasResponse.fromJson(Map<String, dynamic> json) =>
       _$CityWithCountryAndAreasResponseFromJson(json);
 }
+
+extension ToModel on CityWithCountryAndAreasResponse {
+  CityModel toCityModel() {
+    return CityModel(
+        id: city.id,
+        cityName: city.cityName,
+        areas: areas,
+        cityCode: city.cityCode,
+        cityImage: city.cityImage,
+        countryId: country.id,
+        countryModel: country,
+        countryName: country.countryName);
+  }
+}

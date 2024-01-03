@@ -119,7 +119,7 @@ class _$AuthenticatedEventImpl implements _AuthenticatedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthenticatedEventImpl &&
@@ -236,7 +236,7 @@ class _$UnAuthenticatedEventImpl implements _UnAuthenticatedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UnAuthenticatedEventImpl);
@@ -417,7 +417,7 @@ class _$AuthenticatedImpl implements _Authenticated {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthenticatedImpl &&
@@ -533,7 +533,7 @@ class _$UnAuthenticatedImpl implements _UnAuthenticated {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$UnAuthenticatedImpl);
   }

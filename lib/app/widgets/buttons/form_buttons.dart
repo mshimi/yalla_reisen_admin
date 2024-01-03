@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:yalla_reisen_withspringboot/app/widgets/elevated_button_with_icon.dart';
+import 'package:yalla_reisen_withspringboot/app/widgets/buttons/elevated_button_with_icon.dart';
 
 class FormButtons extends StatelessWidget {
   const FormButtons({

@@ -6,6 +6,7 @@ part 'country_model.freezed.dart';
 part 'country_model.g.dart';
 
 @freezed
+
 class CountryModel with _$CountryModel {
   factory CountryModel(
       {required int id,
